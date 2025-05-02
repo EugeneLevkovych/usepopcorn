@@ -4,10 +4,11 @@ import Main from "./components/Main";
 import NumResults from "./components/NumResults";
 import Search from "./components/Search";
 
-import ListBox from "./components/ListBox";
-import WatchedBox from "./components/WatchedBox";
-
+import Box from "./components/Box";
 import MovieList from "./components/MovieList";
+
+import WatchedSumary from "./components/WatchedSumary";
+import WatchedMoviesList from "./components/WatchedMoviesList";
 
 import { useState } from "react";
 
@@ -35,9 +36,34 @@ const tempMovieData = [
   },
 ];
 
+const tempWatchedData = [
+  {
+    imdbID: "tt1375666",
+    Title: "Inception",
+    Year: "2010",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    runtime: 148,
+    imdbRating: 8.8,
+    userRating: 10,
+  },
+  {
+    imdbID: "tt0088763",
+    Title: "Back to the Future",
+    Year: "1985",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    runtime: 116,
+    imdbRating: 8.5,
+    userRating: 9,
+  },
+];
+
+
 
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
 
   return (
     <>
@@ -46,13 +72,26 @@ export default function App() {
         <NumResults movies={movies} />
      </NavBar> 
       <Main>
-         <ListBox>
+        {/* <Box element={<MovieList movies={movies} />} />
+        <Box element={
+        <>
+          <WatchedSumary watched={watched} />
+          <WatchedMoviesList watched={watched}/>
+        </>
+        } 
+        /> */}
+          <Box>
             <MovieList movies={movies} />
-          </ListBox> 
-         <WatchedBox />
+          </Box> 
+          <Box>
+             <WatchedSumary watched={watched} />
+             <WatchedMoviesList watched={watched}/>
+          </Box>
       </Main> 
     </>
   );
 }
 
-//mac mini 10 111 
+//mac mini 10 115
+
+// 12 144,145,146- Effect,Async,Loader. 
