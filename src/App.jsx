@@ -92,6 +92,4 @@ export default function App() {
   );
 }
 
-//mac mini 10 115
-
-// 12 144,145,146- Effect,Async,Loader. 
+ 
