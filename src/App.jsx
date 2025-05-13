@@ -19,30 +19,6 @@ import ErrorMessage from "./components/ErrorMessage";
 import MovieDetails from "./components/MovieDetails";
 
 
-const tempWatchedData = [
-  {
-    imdbID: "tt1375666",
-    Title: "Inception",
-    Year: "2010",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-    runtime: 148,
-    imdbRating: 8.8,
-    userRating: 10,
-  },
-  {
-    imdbID: "tt0088763",
-    Title: "Back to the Future",
-    Year: "1985",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    runtime: 116,
-    imdbRating: 8.5,
-    userRating: 9,
-  },
-];
-
-
 const KEY = '23a6d9cb';
 
 export default function App() {
@@ -60,6 +36,10 @@ export default function App() {
 
   function handleCloseMovie(i) {
     setSelectedId(null);
+  }
+
+  function handleAddWatched(movie) {
+    setWatched(watched => [...watched, movie])
   }
 
 useEffect(function () {
@@ -111,7 +91,12 @@ useEffect(function () {
           </Box> 
           <Box>
              {
-             selectedId ? <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} /> : <><WatchedSumary watched={watched} />
+             selectedId ? <MovieDetails
+              selectedId={selectedId}
+              onCloseMovie={handleCloseMovie}
+              onAddWatched={handleAddWatched}
+              watched={watched}
+              /> : <><WatchedSumary watched={watched} />
              <WatchedMoviesList watched={watched}/></>}
           </Box>
       </Main> 
@@ -119,4 +104,4 @@ useEffect(function () {
   );
 }
 
- //mini 12 151
+ //mini 12 153
